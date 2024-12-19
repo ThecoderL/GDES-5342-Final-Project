@@ -29,7 +29,7 @@ initMap();
 //           resolve(); // API already loaded
 //         } else {
 //           const script = document.createElement('script');
-//           script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCIqgh6wikVwOO0hmngNVge4E0xs4utY6c`;
+//           script.src = `https://maps.googleapis.com/maps/api/js?key=`;
 //           script.async = true;
 //           script.defer = true;
 //
