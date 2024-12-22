@@ -125,7 +125,7 @@ h1 {
 
 .full-image {
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   object-fit: cover;
   margin-bottom: 1rem;
 }
@@ -135,7 +135,7 @@ h1 {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   height: 500px;
   overflow-y: auto;
   padding: 0.5rem;

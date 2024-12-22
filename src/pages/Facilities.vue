@@ -20,7 +20,7 @@ import Navigation from "../components/Navigation.vue";
 <style scoped>
 .facilities {
   text-align: left;
-  height: 100%;
+  //height: 100%;
 }
 
 h2 {

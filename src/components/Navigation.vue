@@ -1,19 +1,20 @@
 <script setup>
 import Facilities from "../pages/Facilities.vue";
+
 </script>
 
 <template>
   <div class="navigation">
       <router-link :to="{ name: 'Home' }" class="router-link">
         <div class="router-link-container">
-          <span class="material-icons">home</span>
+          <img src="../assets/home.svg" alt="Home" />
           Home
         </div>
       </router-link>
 
       <router-link :to="{ name: 'Facilities' }" class="router-link">
         <div class="router-link-container">
-          <span class="material-icons">construction</span>
+          <img src="../assets/construction.svg" alt="Construction" />
           Facilities
         </div>
       </router-link>
@@ -21,7 +22,7 @@ import Facilities from "../pages/Facilities.vue";
 
       <router-link :to="{ name: 'About' }" class="router-link">
         <div class="router-link-container">
-          <span class="material-icons">list</span>
+          <img src="../assets/list.svg" alt="Home" />
           About
         </div>
       </router-link>
@@ -41,8 +42,7 @@ import Facilities from "../pages/Facilities.vue";
 }
 
 .active-link {
-  color: maroon;
-  border-color: maroon;
+  border: 1px solid maroon
 }
 
 .exact-active-link {
@@ -56,6 +56,7 @@ import Facilities from "../pages/Facilities.vue";
   justify-content: center;
   gap: .5rem;
 }
+
 .router-link{
   display: flex;
   justify-content: center;
@@ -63,14 +64,14 @@ import Facilities from "../pages/Facilities.vue";
   color: maroon;
   text-decoration: none;
   background-color: white;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   border-radius: 0.5rem;
   padding: 0.75rem;
 }
 
 .router-link:hover {
-  background-color: #fffefe; /* Add hover effect */
-  border-color: maroon;
+  //border-color: maroon;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 span.material-icons {

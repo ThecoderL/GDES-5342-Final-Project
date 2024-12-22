@@ -95,7 +95,8 @@ const navigateToBuilding = (id) => {
 .card {
   display: flex;
   gap: .5rem;
-  margin: -.25rem;
+  margin-top: -.25rem;
+  margin-bottom: -.25rem;
   align-items: center;
   padding: .25rem .5rem .25rem 2rem;
   border: 1px solid #ccc;
