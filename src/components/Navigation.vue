@@ -1,50 +1,87 @@
 <script setup>
-import Facilities from "./Facilities.vue";
-
+import Facilities from "../pages/Facilities.vue";
 </script>
 
 <template>
-<div class="facilities">
-  <button class="button">
-    <span class="material-icons">home</span>
-    <router-link :to="{ name: 'Home' }">
-      Home
-    </router-link>
-  </button>
+  <div class="navigation">
+      <router-link :to="{ name: 'Home' }" class="router-link">
+        <div class="router-link-container">
+          <span class="material-icons">home</span>
+          Home
+        </div>
+      </router-link>
 
-  <button class="button">
-    <span class="material-icons">construction</span>
-    <router-link :to="{ name: 'Facilities' }">
-      Facilities
-    </router-link>
-  </button>
+      <router-link :to="{ name: 'Facilities' }" class="router-link">
+        <div class="router-link-container">
+          <span class="material-icons">construction</span>
+          Facilities
+        </div>
+      </router-link>
 
-  <button class="button">
-    <span class="material-icons">list</span>
-    <router-link :to="{ name: 'About' }">
-      About
-    </router-link>
-  </button>
-</div>
 
+      <router-link :to="{ name: 'About' }" class="router-link">
+        <div class="router-link-container">
+          <span class="material-icons">list</span>
+          About
+        </div>
+      </router-link>
+
+  </div>
 </template>
 
 <style scoped>
-
-.facilities{
+.navigation {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   width: 100%;
-}
-
-.button{
-  display: flex;
-  gap: .5rem;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  color: black;
+  box-sizing: border-box;
   background-color: white;
+  border-radius: .5rem;
+  padding: 1rem;
 }
 
+.active-link {
+  color: maroon;
+  border-color: maroon;
+}
+
+.exact-active-link {
+  font-weight: 700;
+  border: 2px solid maroon !important;
+}
+
+.router-link-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+.router-link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: maroon;
+  text-decoration: none;
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+.router-link:hover {
+  background-color: #fffefe; /* Add hover effect */
+  border-color: maroon;
+}
+
+span.material-icons {
+  font-size: 1.25rem;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .navigation {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
 </style>

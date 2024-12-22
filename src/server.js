@@ -43,9 +43,10 @@ app.get("/api/buildings", (req, res) => {
 app.get("/api/buildings/search", (req, res) => {
     const { name } = req.query; // Get the search query
     const query = `
-    SELECT DISTINCT BuildingName
+    SELECT DISTINCT BuildingName, BuildingID
     FROM Buildings
     WHERE BuildingName LIKE ?
+    GROUP BY BuildingID, BuildingName
     `;
     db.query(query, [`%${name}%`], (err, results) => {
         if (err) {

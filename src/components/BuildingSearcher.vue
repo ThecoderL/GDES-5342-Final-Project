@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import axios from "axios";
+import { useRouter } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 // Reactive variables
 const searchQuery = ref("");
@@ -17,20 +19,20 @@ const fetchBuildings = async () => {
     const response = await axios.get("http://localhost:3300/api/buildings/search", {
       params: { name: searchQuery.value }
     });
+    console.log(response.data);
     buildings.value = response.data;
   } catch (error) {
     console.error("Error fetching buildings:", error);
   }
 };
 
-const navigateToBuilding = (buildingId) => {
-  router.push(`/buildings/${buildingId}`);
+const navigateToBuilding = (id) => {
+  router.push(`/buildings/${id}`);
 };
 
 </script>
 
 <template>
-  <div>
     <div :class="['search-bar', { 'search-bar--results': buildings.length > 0 }]"
     >
       <span class="material-icons">search</span>
@@ -45,9 +47,9 @@ const navigateToBuilding = (buildingId) => {
     >
       <span class="material-icons">home</span>
       <p>{{ building.BuildingName }}</p>
+      <p>ID:{{ building.BuildingID }}</p>
     </div>
-  </div>
-
+  <router-view></router-view>
 </template>
 
 <style scoped>
@@ -55,7 +57,7 @@ const navigateToBuilding = (buildingId) => {
   display: flex;
   gap: .25rem;
   align-content: center;
-  border: 2px maroon solid;
+  border: 2px rgba(128, 0, 0, 0.5) solid;
   background-color: white;
   padding: 1rem;
   border-radius: 10rem 10rem 10rem 10rem;
@@ -74,7 +76,7 @@ const navigateToBuilding = (buildingId) => {
 }
 
 .search-bar-input{
-  //width: 100%;
+  width: 100%;
   display: flex;
   border: none;
   outline: none;
@@ -90,25 +92,22 @@ const navigateToBuilding = (buildingId) => {
   font-weight: bold;
 }
 
-.search-bar-input::text{
-  color: rgba(13, 0, 128, 0.5);
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-weight: bold;
-}
-
-
 .card {
   display: flex;
   gap: .5rem;
   margin: -.25rem;
   align-items: center;
-  padding: .25rem 1rem .25rem 2rem;
+  padding: .25rem .5rem .25rem 2rem;
   border: 1px solid #ccc;
   border-radius: .75rem;
   color: grey;
   background-color: white;
   text-align: left;
-  //position: relative;
+  cursor: pointer;
 }
 
+.card:hover {
+  color: maroon;
+
+}
 </style>

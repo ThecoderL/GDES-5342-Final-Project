@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Navigation from "./Navigation.vue";
+import Navigation from "../components/Navigation.vue";
 </script>
 
 <template>
@@ -28,8 +28,6 @@ import Navigation from "./Navigation.vue";
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  width: 100%;
   align-items: start;
   text-align: left;
 }
