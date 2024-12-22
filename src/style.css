@@ -20,7 +20,6 @@ body {
   align-items: start;
 }
 
-
 h1 {
   text-align: left;
   font-size: 1.5rem;
@@ -36,14 +35,16 @@ button {
 }
 
 #app {
-  /*max-width: 1280px;*/
+  width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-
-
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
 
 @media (min-width: 768px) {
   h1 {
@@ -53,11 +54,11 @@ button {
     margin-top: 4rem;
   }
 
-  .home {
-    flex-direction: row;
-    align-items: start;
-    gap: 2rem;
-  }
+  /*.home {*/
+  /*  flex-direction: row;*/
+  /*  align-items: start;*/
+  /*  gap: 2rem;*/
+  /*}*/
 
   .full-image {
     width: 50%;

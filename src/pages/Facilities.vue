@@ -7,25 +7,30 @@ import Navigation from "../components/Navigation.vue";
     <Navigation />
     <h1>Facilities</h1>
     <h2>
-      To Request Routine Services, Call, Email or use our Non-Emergency Online
-      Self Service
+      To request routine services, call, email or use our
     </h2>
     <div class="call">
       <span class="material-icons">phone</span>
-      <h3>(612) 624-2900</h3>
+      <h3><a href= “tel:612624-2900”>(612) 624-2900</a></h3>
+    </div>
+    <div class="call">
+      <span class="material-icons">email</span>
+      <h3><a href= "mailto:name@email.com">fmcc@umn.edu</a></h3>
     </div>
   </div>
 </template>
 
 <style scoped>
 .facilities {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
   text-align: left;
-  //height: 100%;
 }
 
-h2 {
-  font-size: 1rem;
-  margin-top: 0.5rem;
+a{
+  text-decoration: none;
+  color: white;
 }
 
 .call {
@@ -38,6 +43,7 @@ h2 {
   border-radius: 0.5rem;
   width: 100%;
   box-sizing: border-box;
+  margin-bottom: 1rem;
 }
 
 span.material-icons {
@@ -46,13 +52,7 @@ span.material-icons {
 
 /* Desktop styles */
 @media (min-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
 
-  h2 {
-    font-size: 1.25rem;
-  }
 
   .call {
     display: flex;

@@ -96,24 +96,20 @@ import Navigation from "../components/Navigation.vue";
       <h1>Gopher Bathrooms</h1>
     </div>
     <div class="home">
-      <img class="full-image" src="../assets/umnmaps.jpg" alt="University of Minnesota Map" />
+      <div class="img-div">
+        <img class="full-image" src="../assets/umnmaps.jpg" alt="University of Minnesota Map" />
+      </div>
       <div class="bathroom-cards">
         <BuildingSearcher />
         <router-view />
-<!--        <Building />-->
-        <CardComponent number="1"/>
+        <Building />
+<!--        <CardComponent number="1"/>-->
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-h1 {
-  text-align: left;
-  font-size: 1.5rem;
-  margin-top: 4rem;
-}
-
 .home {
   display: flex;
   flex-direction: column;
@@ -125,9 +121,9 @@ h1 {
 
 .full-image {
   width: 100%;
-  max-width: 400px;
   object-fit: cover;
   margin-bottom: 1rem;
+  border-radius: 0.5rem;
 }
 
 .bathroom-cards {
@@ -135,7 +131,6 @@ h1 {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  max-width: 400px;
   height: 500px;
   overflow-y: auto;
   padding: 0.5rem;
@@ -149,25 +144,23 @@ h1 {
 
 /* Styles for larger screens */
 @media (min-width: 768px) {
-  h1 {
-    text-align: left;
-    font-size: 2.5rem;
-    margin-top: 4rem;
-  }
-
   .home {
     flex-direction: row;
     align-items: start;
+    justify-content: center;
     gap: 2rem;
   }
 
+  .img-div{
+    display: flex;
+  }
   .full-image {
-    width: 50%;
+    width: 100%;
     margin-bottom: 0;
   }
 
   .bathroom-cards {
-    max-width: 50%;
+    //max-width: 50%;
     height: auto;
   }
 }

@@ -148,7 +148,6 @@ img {
     border-radius: .25rem;
   }
 
-
   .bathroom-card-ratings{
     display: flex;
     align-items: center;

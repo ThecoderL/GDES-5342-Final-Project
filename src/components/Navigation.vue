@@ -64,7 +64,7 @@ import Facilities from "../pages/Facilities.vue";
   color: maroon;
   text-decoration: none;
   background-color: white;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 0.5rem;
   padding: 0.75rem;
 }
@@ -81,6 +81,7 @@ span.material-icons {
 /* Desktop styles */
 @media (min-width: 768px) {
   .navigation {
+    width: 100%;
     flex-direction: row;
     justify-content: space-between;
   }
