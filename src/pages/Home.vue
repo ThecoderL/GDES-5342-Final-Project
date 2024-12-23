@@ -102,7 +102,7 @@ import Navigation from "../components/Navigation.vue";
       <div class="bathroom-cards">
         <BuildingSearcher />
 <!--        <CardComponent number="1"/>-->
-        <router-view/>
+        <router-view :key="$route.params.buildingID"/>
 
       </div>
     </div>

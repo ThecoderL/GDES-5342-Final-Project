@@ -62,6 +62,15 @@ const fetchReviewsForBathroom = async (bathroomId: number) => {
   }
 };
 
+watch(
+    () => route.params.id,
+    (newBuildingId) => {
+      if (newBuildingId) {
+        fetchBuildingDetail(newBuildingId);
+      }
+    }
+);
+
 // Watch for changes in selected floor and fetch bathroom data accordingly
 watch(selectedFloor, (newFloorId) => {
   if (newFloorId) {
@@ -84,7 +93,7 @@ onMounted(fetchBuildingDetail);
     <h2>{{ building.BuildingName }}</h2>
 
     <!-- Render the FloorToggleBar component, passing floor data and selected floor -->
-    <FloorToggleBar :floors="floors" :selectedFloor="selectedFloor" />
+    <FloorToggleBar :floors="floors" v-model:selectedFloor="selectedFloor" />
 
     <!-- Display bathrooms for the selected floor -->
     <div v-if="selectedFloor && bathrooms.length">
@@ -94,6 +103,7 @@ onMounted(fetchBuildingDetail);
     <!-- Display reviews for the selected bathroom -->
     <div v-if="selectedBathroom && reviews.length" class="bathroom-review">
         <div v-for="review in reviews" :key="review.review_id">
+          <p>{{  }}</p>
           <h2>{{ review.reviewer_name }}</h2>
           ⭐ Rating: {{ review.rating }}
           <p>"{{ review.review_text }}"</p>

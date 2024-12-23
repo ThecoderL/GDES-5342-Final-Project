@@ -10,6 +10,11 @@ const router = useRouter();
 const searchQuery = ref("");
 const buildings = ref([]);
 
+const clearSearch = () => {
+  searchQuery.value = "";
+  buildings.value = [];
+};
+
 // Fetch buildings based on search
 const fetchBuildings = async () => {
   // Do not fetch if the search query is empty
@@ -44,6 +49,7 @@ const navigateToBuilding = (id) => {
           placeholder="Search Buildings"
           class="search-bar-input"
       />
+      <span v-if="searchQuery.length > 0" class="clear-icon" @click="clearSearch">&#x2716;</span>
     </div>
     <div v-for="(building, index) in buildings" :key="index" class="card" @click="navigateToBuilding(building.BuildingID)"
     >
@@ -73,6 +79,8 @@ const navigateToBuilding = (id) => {
   padding: 1rem;
   border-radius: 1.75rem 1.75rem 0 0;
   color: maroon;
+  box-shadow: rgb(256, 0, 0) 0px 10px 40px -10px;
+
 }
 
 .search-bar-input{
@@ -105,10 +113,19 @@ const navigateToBuilding = (id) => {
   background-color: white;
   text-align: left;
   cursor: pointer;
+  position: relative;
+  left: 0;
+  right: 0;
+  z-index: 50; /* Ensure the results appear on top of other content */
 }
 
 .card:hover {
   color: maroon;
+}
 
+.clear-icon {
+  cursor: pointer;
+  //position: absolute;
+  right: 1rem;
 }
 </style>

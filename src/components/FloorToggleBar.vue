@@ -1,16 +1,19 @@
-<!-- FloorToggleBar.vue -->
 <script setup lang="ts">
-import { defineProps, ref } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 
-// Define props to accept floor data from the parent component
+// Define props to accept floor data and the selected floor
 const props = defineProps({
   floors: Array, // Array of floors to render
-  selectedFloor: Number // The currently selected floor
+  selectedFloor: Number, // The currently selected floor
 });
 
-// Reactive variable to store the selected floor
-const selectedFloor = ref(props.selectedFloor);
+// Emit event to notify parent of floor selection
+const emit = defineEmits(["update:selectedFloor"]);
 
+// Handle floor selection
+const handleFloorClick = (floorNumber: number) => {
+  emit("update:selectedFloor", floorNumber);
+};
 </script>
 
 <template>
@@ -19,8 +22,8 @@ const selectedFloor = ref(props.selectedFloor);
         v-for="floor in floors"
         :key="floor.FloorID"
         :class="{ 'active': selectedFloor === floor.FloorNumber }"
-        @click="selectedFloor = floor.FloorNumber"
-        class="floor-btn"
+        @click="handleFloorClick(floor.FloorNumber)"
+        class="floor-button"
     >
       Floor {{ floor.FloorNumber }}
     </button>
@@ -36,7 +39,7 @@ const selectedFloor = ref(props.selectedFloor);
   border-radius: 0.5rem;
 }
 
-.floor-btn {
+.floor-button {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -51,12 +54,12 @@ const selectedFloor = ref(props.selectedFloor);
   padding: 0.75rem;
 }
 
-.floor-btn.active {
+.floor-button.active {
   background-color: maroon;
   color: white;
 }
 
-.floor-btn:hover {
+.floor-button:hover {
   box-shadow: rgb(0, 0, 0) 0px 10px 40px -10px;
 }
 </style>
