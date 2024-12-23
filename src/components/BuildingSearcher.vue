@@ -49,7 +49,6 @@ const navigateToBuilding = (id) => {
     >
       <span class="material-icons">home</span>
       <p>{{ building.BuildingName }}</p>
-      <p>ID:{{ building.BuildingID }}</p>
     </div>
 </template>
 

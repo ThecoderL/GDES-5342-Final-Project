@@ -82,8 +82,6 @@ onMounted(fetchBuildingDetail);
 <template>
   <div v-if="building" class="building-detail">
     <h2>{{ building.BuildingName }}</h2>
-    <p>{{ building.Description }}</p>
-    <p>Location: {{ building.Location }}</p>
 
     <!-- Render the FloorToggleBar component, passing floor data and selected floor -->
     <FloorToggleBar :floors="floors" :selectedFloor="selectedFloor" />
@@ -122,6 +120,5 @@ h2{
   border: 1px solid #ccc;
   border-radius: 0.5rem;
 }
-
 
 </style>
