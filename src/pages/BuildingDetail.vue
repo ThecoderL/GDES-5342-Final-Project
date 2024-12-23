@@ -38,7 +38,7 @@ const fetchBuildingDetail = async () => {
 
 // Fetch bathrooms for the selected floor
 const fetchBathroomsForFloor = async (floorId: number) => {
-  const buildingId = route.params.id; // Get the building ID from the route
+  // const buildingId = route.params.id; // Get the building ID from the route
   try {
     const response = await axios.get(`http://localhost:3300/api/floors/${floorId}/bathrooms`);
     bathrooms.value = response.data;
@@ -103,7 +103,6 @@ onMounted(fetchBuildingDetail);
     <!-- Display reviews for the selected bathroom -->
     <div v-if="selectedBathroom && reviews.length" class="bathroom-review">
         <div v-for="review in reviews" :key="review.review_id">
-          <p>{{  }}</p>
           <h2>{{ review.reviewer_name }}</h2>
           ⭐ Rating: {{ review.rating }}
           <p>"{{ review.review_text }}"</p>
@@ -111,6 +110,8 @@ onMounted(fetchBuildingDetail);
     </div>
   </div>
 </template>
+
+
 <style scoped>
 h2{
   font-size: 1.25rem;
