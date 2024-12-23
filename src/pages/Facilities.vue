@@ -7,7 +7,7 @@ import Navigation from "../components/Navigation.vue";
     <Navigation />
     <h1>Facilities</h1>
     <h2>
-      To request routine services, call, email or use our
+      To request routine services, call, or email the umn facilities team
     </h2>
     <div class="call">
       <span class="material-icons">phone</span>
@@ -52,7 +52,6 @@ span.material-icons {
 
 /* Desktop styles */
 @media (min-width: 768px) {
-
 
   .call {
     display: flex;
