@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import axios from "axios";
-import { useRouter } from "vue-router";
+import { useRouter } from 'vue-router';
 import { createRouter, createWebHistory } from "vue-router";
+
+const router = useRouter();
 
 // Reactive variables
 const searchQuery = ref("");
@@ -49,7 +51,6 @@ const navigateToBuilding = (id) => {
       <p>{{ building.BuildingName }}</p>
       <p>ID:{{ building.BuildingID }}</p>
     </div>
-  <router-view></router-view>
 </template>
 
 <style scoped>

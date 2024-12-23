@@ -20,7 +20,6 @@ import Lennon from "../assets/Lennon.jpg"
         <br>
         <p>You can find him on LinkedIn: <a href="https://www.linkedin.com/in/lennon-macharia/">lennonmacharia</a></p>
         <p>You can reach him via Email: <a href="mailto:lennonmacharia@gmail.com">lennonmacharia@gmail.com</a></p>
-
       </div>
     </div>
   </div>
@@ -59,7 +58,7 @@ import Lennon from "../assets/Lennon.jpg"
   .profile {
     flex-direction: row;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 3rem;
   }
 
   .profile-image img {

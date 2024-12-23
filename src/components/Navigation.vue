@@ -36,9 +36,9 @@ import Facilities from "../pages/Facilities.vue";
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
-  background-color: white;
+  background-color: #FFF3CE;
   border-radius: .5rem;
-  padding: 1rem;
+  padding: .5rem;
 }
 
 .active-link {
@@ -63,15 +63,15 @@ import Facilities from "../pages/Facilities.vue";
   align-items: center;
   color: maroon;
   text-decoration: none;
-  background-color: white;
+  background-color: #FFF3CE;
   border: 2px solid transparent;
   border-radius: 0.5rem;
-  padding: 0.75rem;
+  padding: 1rem;
 }
 
 .router-link:hover {
   //border-color: maroon;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgb(0, 0, 0) 0px 10px 40px -10px;
 }
 
 span.material-icons {

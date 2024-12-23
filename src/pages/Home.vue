@@ -101,9 +101,9 @@ import Navigation from "../components/Navigation.vue";
       </div>
       <div class="bathroom-cards">
         <BuildingSearcher />
-        <router-view />
-        <Building />
 <!--        <CardComponent number="1"/>-->
+        <router-view/>
+
       </div>
     </div>
   </div>
