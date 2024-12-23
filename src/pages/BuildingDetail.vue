@@ -38,7 +38,7 @@ const fetchBuildingDetail = async () => {
 
 // Fetch bathrooms for the selected floor
 const fetchBathroomsForFloor = async (floorId: number) => {
-  const buildingId = route.params.id; // Get the building ID from the route
+  // const buildingId = route.params.id; // Get the building ID from the route
   try {
     const response = await axios.get(`http://localhost:3300/api/floors/${floorId}/bathrooms`);
     bathrooms.value = response.data;
