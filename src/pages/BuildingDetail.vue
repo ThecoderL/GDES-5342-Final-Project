@@ -11,7 +11,7 @@ interface Building {
 }
 
 interface Floor {
-  FloorID?: number;
+  FloorID: number;
   FloorNumber: number;
   [key: string]: any;
 }
