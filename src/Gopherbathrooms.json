@@ -1,0 +1,59 @@
+{
+  "buildings": [
+    { "BuildingID": 1, "BuildingName": "Rapson Hall", "ImageUrl": "https://example.com/rapson.jpg" },
+    { "BuildingID": 2, "BuildingName": "Lind Hall", "ImageUrl": "https://example.com/lind.jpg" },
+    { "BuildingID": 3, "BuildingName": "Mechanical Engineering", "ImageUrl": "https://example.com/mechanical.jpg" },
+    { "BuildingID": 4, "BuildingName": "Tate Hall", "ImageUrl": "https://example.com/tate.jpg" },
+    { "BuildingID": 5, "BuildingName": "Vincent Hall", "ImageUrl": "https://example.com/vincent.jpg" }
+  ],
+  "floors": [
+    { "FloorID": 1, "BuildingID": 1, "FloorNumber": 1 },
+    { "FloorID": 2, "BuildingID": 1, "FloorNumber": 2 },
+    { "FloorID": 3, "BuildingID": 1, "FloorNumber": 3 },
+    { "FloorID": 4, "BuildingID": 2, "FloorNumber": 1 },
+    { "FloorID": 5, "BuildingID": 2, "FloorNumber": 2 },
+    { "FloorID": 6, "BuildingID": 3, "FloorNumber": 1 },
+    { "FloorID": 7, "BuildingID": 3, "FloorNumber": 2 },
+    { "FloorID": 8, "BuildingID": 4, "FloorNumber": 1 },
+    { "FloorID": 9, "BuildingID": 5, "FloorNumber": 1 },
+    { "FloorID": 10, "BuildingID": 5, "FloorNumber": 2 },
+    { "FloorID": 11, "BuildingID": 5, "FloorNumber": 3 }
+  ],
+  "bathrooms": [
+    { "BathroomID": 1, "FloorID": 1, "Gender": "Men", "ImageUrl": "https://example.com/rapson_men_1.jpg" },
+    { "BathroomID": 2, "FloorID": 1, "Gender": "Women", "ImageUrl": "https://example.com/rapson_women_1.jpg" },
+    { "BathroomID": 3, "FloorID": 2, "Gender": "Gender Neutral", "ImageUrl": "https://example.com/rapson_gn_2.jpg" },
+    { "BathroomID": 4, "FloorID": 3, "Gender": "Men", "ImageUrl": "https://example.com/rapson_men_3.jpg" },
+    { "BathroomID": 5, "FloorID": 4, "Gender": "Women", "ImageUrl": "https://example.com/lind_women_1.jpg" },
+    { "BathroomID": 6, "FloorID": 5, "Gender": "Gender Neutral", "ImageUrl": "https://example.com/lind_gn_2.jpg" },
+    { "BathroomID": 7, "FloorID": 6, "Gender": "Men", "ImageUrl": "https://example.com/me_men_1.jpg" },
+    { "BathroomID": 8, "FloorID": 7, "Gender": "Women", "ImageUrl": "https://example.com/me_women_2.jpg" },
+    { "BathroomID": 9, "FloorID": 8, "Gender": "Gender Neutral", "ImageUrl": "https://example.com/tate_gn_1.jpg" },
+    { "BathroomID": 10, "FloorID": 9, "Gender": "Men", "ImageUrl": "https://example.com/vincent_men_1.jpg" },
+    { "BathroomID": 11, "FloorID": 10, "Gender": "Women", "ImageUrl": "https://example.com/vincent_women_2.jpg" }
+  ],
+  "amenities": [
+    { "BathroomID": 1, "NumStalls": 3, "NumUrinals": 2, "HasFullBodyMirror": true, "HasAirDryer": true, "HasPaperTowelDispenser": true, "IsAccessible": true },
+    { "BathroomID": 2, "NumStalls": 4, "NumUrinals": 0, "HasFullBodyMirror": true, "HasAirDryer": false, "HasPaperTowelDispenser": true, "IsAccessible": true },
+    { "BathroomID": 3, "NumStalls": 2, "NumUrinals": 0, "HasFullBodyMirror": false, "HasAirDryer": true, "HasPaperTowelDispenser": true, "IsAccessible": true },
+    { "BathroomID": 4, "NumStalls": 3, "NumUrinals": 2, "HasFullBodyMirror": true, "HasAirDryer": true, "HasPaperTowelDispenser": false, "IsAccessible": true },
+    { "BathroomID": 5, "NumStalls": 5, "NumUrinals": 0, "HasFullBodyMirror": false, "HasAirDryer": true, "HasPaperTowelDispenser": true, "IsAccessible": false },
+    { "BathroomID": 6, "NumStalls": 3, "NumUrinals": 2, "HasFullBodyMirror": true, "HasAirDryer": false, "HasPaperTowelDispenser": true, "IsAccessible": true },
+    { "BathroomID": 7, "NumStalls": 2, "NumUrinals": 1, "HasFullBodyMirror": true, "HasAirDryer": true, "HasPaperTowelDispenser": true, "IsAccessible": true },
+    { "BathroomID": 8, "NumStalls": 4, "NumUrinals": 0, "HasFullBodyMirror": false, "HasAirDryer": true, "HasPaperTowelDispenser": true, "IsAccessible": false },
+    { "BathroomID": 9, "NumStalls": 3, "NumUrinals": 2, "HasFullBodyMirror": true, "HasAirDryer": true, "HasPaperTowelDispenser": true, "IsAccessible": true },
+    { "BathroomID": 10, "NumStalls": 5, "NumUrinals": 0, "HasFullBodyMirror": true, "HasAirDryer": false, "HasPaperTowelDispenser": true, "IsAccessible": false }
+  ],
+  "reviews": [
+    { "BathroomID": 1, "ReviewerName": "John Doe", "Rating": 4, "ReviewText": "Clean and spacious." },
+    { "BathroomID": 2, "ReviewerName": "Jane Smith", "Rating": 5, "ReviewText": "Loved the full-body mirror!" },
+    { "BathroomID": 3, "ReviewerName": "Sam Taylor", "Rating": 3, "ReviewText": "Needs better lighting." },
+    { "BathroomID": 4, "ReviewerName": "Alex Brown", "Rating": 4, "ReviewText": "Great amenities but a bit crowded." },
+    { "BathroomID": 5, "ReviewerName": "Chris Green", "Rating": 2, "ReviewText": "Soap dispenser was empty." },
+    { "BathroomID": 6, "ReviewerName": "Pat Morgan", "Rating": 5, "ReviewText": "Very accessible and clean." },
+    { "BathroomID": 7, "ReviewerName": "Jordan Lee", "Rating": 4, "ReviewText": "Convenient location." },
+    { "BathroomID": 8, "ReviewerName": "Taylor White", "Rating": 3, "ReviewText": "Could use more stalls." },
+    { "BathroomID": 9, "ReviewerName": "Morgan Black", "Rating": 5, "ReviewText": "Absolutely spotless!" },
+    { "BathroomID": 10, "ReviewerName": "Casey Gray", "Rating": 4, "ReviewText": "Good overall, but no air dryer." }
+  ]
+}

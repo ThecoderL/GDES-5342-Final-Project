@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import axios from "axios";
 import { useRouter } from 'vue-router';
-// import { createRouter, createWebHistory } from "vue-router";
+import Gopherbathrooms  from '../Gopherbathrooms.json';  // Adjust the path to your JSON file
 
 const router = useRouter();
 
@@ -11,7 +10,6 @@ interface Building {
   BuildingName: string;
 }
 
-// Reactive variables
 const searchQuery = ref("");
 const buildings = ref<Building[]>([]);
 
@@ -21,46 +19,38 @@ const clearSearch = () => {
 };
 
 // Fetch buildings based on search
-const fetchBuildings = async () => {
-  // Do not fetch if the search query is empty
+const fetchBuildings = () => {
   if (searchQuery.value.trim() === "") {
     buildings.value = [];
     return;
   }
-  try {
-    const response = await axios.get("http://localhost:3300/api/buildings/search", {
-      params: { name: searchQuery.value }
-    });
-    console.log(response.data);
-    buildings.value = response.data;
-  } catch (error) {
-    console.error("Error fetching buildings:", error);
-  }
+
+  // Filter buildings from imported data
+  buildings.value = Gopherbathrooms.buildings.filter((building: Building) =>
+      building.BuildingName.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
 };
 
 const navigateToBuilding = (id: number) => {
   router.push(`/buildings/${id}`);
 };
-
 </script>
 
 <template>
-    <div :class="['search-bar', { 'search-bar--results': buildings.length > 0 }]"
-    >
-      <span class="material-icons">search</span>
-      <input
-          v-model="searchQuery"
-          @input="fetchBuildings"
-          placeholder="Search Buildings"
-          class="search-bar-input"
-      />
-      <span v-if="searchQuery.length > 0" class="clear-icon" @click="clearSearch">&#x2716;</span>
-    </div>
-    <div v-for="(building, index) in buildings" :key="index" class="card" @click="navigateToBuilding(building.BuildingID)"
-    >
-      <span class="material-icons">home</span>
-      <p>{{ building.BuildingName }}</p>
-    </div>
+  <div :class="['search-bar', { 'search-bar--results': buildings.length > 0 }]">
+    <span class="material-icons">search</span>
+    <input
+        v-model="searchQuery"
+        @input="fetchBuildings"
+        placeholder="Search Buildings"
+        class="search-bar-input"
+    />
+    <span v-if="searchQuery.length > 0" class="clear-icon" @click="clearSearch">&#x2716;</span>
+  </div>
+  <div v-for="(building, index) in buildings" :key="index" class="card" @click="navigateToBuilding(building.BuildingID)">
+    <span class="material-icons">home</span>
+    <p>{{ building.BuildingName }}</p>
+  </div>
 </template>
 
 <style scoped>
@@ -132,5 +122,4 @@ const navigateToBuilding = (id: number) => {
   cursor: pointer;
   //position: absolute;
   right: 1rem;
-}
-</style>
+}</style>

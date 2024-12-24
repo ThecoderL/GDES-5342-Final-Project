@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
-import axios from "axios";
 import FloorToggleBar from "../components/FloorToggleBar.vue";
+import Gopherbathrooms from '../Gopherbathrooms.json';  // Adjust the path to your JSON file
 
-// Define types
 interface Building {
   BuildingName: string;
   [key: string]: any;
@@ -22,13 +21,12 @@ interface Bathroom {
 }
 
 interface Review {
-  review_id: number;
-  reviewer_name: string;
-  rating: number;
-  review_text: string;
+  BathroomID: number;
+  ReviewerName: string;
+  Rating: number;
+  ReviewText: string;
 }
 
-// Reactive variables with types
 const route = useRoute();
 const building = ref<Building | null>(null);
 const floors = ref<Floor[]>([]);
@@ -37,58 +35,46 @@ const bathrooms = ref<Bathroom[]>([]);
 const selectedBathroom = ref<number | null>(null);
 const reviews = ref<Review[]>([]);
 
-// Fetch building details
-const fetchBuildingDetail = async () => {
+const fetchBuildingDetail = () => {
   const buildingId = route.params.id as string; // Ensure buildingId is a string
-  try {
-    // Fetch building details
-    const response = await axios.get(`http://localhost:3300/api/buildings/${buildingId}`);
-    building.value = response.data;
 
-    // Fetch floors for the building
-    const floorResponse = await axios.get(`http://localhost:3300/api/buildings/${buildingId}/floors`);
-    floors.value = floorResponse.data.map((floor: any, index: number) => ({
-      ...floor,
-      FloorID: floor.FloorID ?? index, // Add unique FloorID if missing
-    }));
+  // Get the building details from imported data
+  const buildingData = Gopherbathrooms.buildings.find((b: Building) => b.BuildingID === Number(buildingId));
+  if (buildingData) {
+    building.value = buildingData;
 
+    // Get floors for the building
+    floors.value = Gopherbathrooms.floors.filter((f: Floor) => f.BuildingID === Number(buildingId));
     // Default to the first floor if available
     if (floors.value.length > 0) {
       selectedFloor.value = floors.value[0].FloorNumber;
       fetchBathroomsForFloor(selectedFloor.value);
     }
-  } catch (error) {
-    console.error("Error fetching building details:", error);
   }
 };
 
 // Fetch bathrooms for a floor
-const fetchBathroomsForFloor = async (floorId: number) => {
-  try {
-    const response = await axios.get(`http://localhost:3300/api/floors/${floorId}/bathrooms`);
-    bathrooms.value = response.data;
-
-    // Default to the first bathroom if available
-    if (bathrooms.value.length > 0) {
-      selectedBathroom.value = bathrooms.value[0].BathroomID;
-      fetchReviewsForBathroom(selectedBathroom.value);
-    }
-  } catch (error) {
-    console.error("Error fetching bathrooms:", error);
+const fetchBathroomsForFloor = (floorId: number) => {
+  bathrooms.value = Gopherbathrooms.bathrooms.filter((bathroom: Bathroom) =>
+      bathroom.FloorID === floorId
+  );
+  // Default to the first bathroom if available
+  if (bathrooms.value.length > 0) {
+    selectedBathroom.value = bathrooms.value[0].BathroomID;
+    fetchReviewsForBathroom(selectedBathroom.value);
   }
 };
 
 // Fetch reviews for a bathroom
-const fetchReviewsForBathroom = async (bathroomId: number) => {
-  try {
-    const response = await axios.get(`http://localhost:3300/api/bathrooms/${bathroomId}/reviews`);
-    reviews.value = response.data;
-  } catch (error) {
-    console.error("Error fetching reviews:", error);
-  }
+const fetchReviewsForBathroom = (bathroomId: number) => {
+  reviews.value = Gopherbathrooms.reviews.filter((review: Review) =>
+      review.BathroomID === bathroomId
+  );
+  console.log("Reviews fetched for bathroom ID", bathroomId, reviews.value);
+  console.log("Reviews count:", reviews.value.length); // Log the length
+
 };
 
-// Watchers
 watch(
     () => route.params.id,
     (newBuildingId) => {
@@ -105,12 +91,12 @@ watch(selectedFloor, (newFloorId) => {
 });
 
 watch(selectedBathroom, (newBathroomId) => {
+  console.log("Selected Bathroom ID:", newBathroomId);  // Check the selected bathroom ID
   if (newBathroomId !== null) {
     fetchReviewsForBathroom(newBathroomId);
   }
 });
 
-// Initial fetch
 onMounted(fetchBuildingDetail);
 </script>
 
@@ -132,12 +118,12 @@ onMounted(fetchBuildingDetail);
     </div>
 
     <!-- Reviews for the selected bathroom -->
-    <div v-if="selectedBathroom && reviews.length" class="bathroom-review">
+    <div class="bathroom-review">
       <h3>Reviews:</h3>
-      <div v-for="review in reviews" :key="review.review_id">
-        <h4>{{ review.reviewer_name }}</h4>
-        ⭐ Rating: {{ review.rating }}
-        <p>"{{ review.review_text }}"</p>
+      <div v-for="review in reviews" :key="review.BathroomID">
+        <h4>{{ review.ReviewerName }}</h4>
+        ⭐ Rating: {{ review.Rating }}
+        <p>"{{ review.ReviewText }}"</p>
       </div>
     </div>
   </div>
@@ -162,5 +148,4 @@ h2 {
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
-}
-</style>
+}</style>
