@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue';
 
-// Define props to accept floor data and the selected floor
-const props = defineProps({
-  floors: Array, // Array of floors to render
-  selectedFloor: Number, // The currently selected floor
-});
+// Define a type for floors
+interface Floor {
+  FloorID: number;
+  FloorNumber: number;
+}
+
+// Define props with types
+const props = defineProps<{
+  floors: Floor[]; // Array of floors
+  selectedFloor: number | null; // Currently selected floor
+}>();
 
 // Emit event to notify parent of floor selection
 const emit = defineEmits(["update:selectedFloor"]);

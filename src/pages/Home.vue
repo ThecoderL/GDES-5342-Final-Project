@@ -83,7 +83,7 @@
 
 <script setup lang="ts">
 import CardComponent from "../components/CardComponent.vue";
-import Building from "./Building.vue";
+import Building from "../components/Building.vue";
 import BuildingSearcher from "../components/BuildingSearcher.vue";
 import BathroomSearcher from "../components/BathroomSearcher.vue";
 import Navigation from "../components/Navigation.vue";

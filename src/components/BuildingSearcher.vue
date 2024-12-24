@@ -2,13 +2,18 @@
 import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from 'vue-router';
-import { createRouter, createWebHistory } from "vue-router";
+// import { createRouter, createWebHistory } from "vue-router";
 
 const router = useRouter();
 
+interface Building {
+  BuildingID: number;
+  BuildingName: string;
+}
+
 // Reactive variables
 const searchQuery = ref("");
-const buildings = ref([]);
+const buildings = ref<Building[]>([]);
 
 const clearSearch = () => {
   searchQuery.value = "";
@@ -33,7 +38,7 @@ const fetchBuildings = async () => {
   }
 };
 
-const navigateToBuilding = (id) => {
+const navigateToBuilding = (id: number) => {
   router.push(`/buildings/${id}`);
 };
 
