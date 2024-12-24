@@ -7,7 +7,7 @@ import Lennon from "../assets/Lennon.jpg"
   <div class="about">
     <Navigation/>
     <h1>About</h1>
-    <h2>Gopher Bathrooms is your go-to location for all things bathrooms here @ the University of Minnesota Twin Cities</h2>
+    <h2>This is your go-to location for all things bathrooms here @ the University of Minnesota Twin Cities</h2>
     <p>This website is maintained (you hope) by:</p>
 
     <div class="profile">

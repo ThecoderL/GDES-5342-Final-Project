@@ -11,7 +11,7 @@ const props = defineProps<{
       <img src="../assets/Bathroom.jpg" alt="">
     </div>
     <div class="bathroom-card-content">
-      <h3>Bathroom {{ number }}</h3>
+      <h3>Bathroom {{ props.number }}</h3>
       <div class="bathroom-card-ratings">
         <p class="p-transparent">4.6</p>
         <div class="bathroom-card-stars">

@@ -49,7 +49,7 @@ const fetchBuildingDetail = async () => {
     const floorResponse = await axios.get(`http://localhost:3300/api/buildings/${buildingId}/floors`);
     floors.value = floorResponse.data.map((floor: any, index: number) => ({
       ...floor,
-      FloorID: index, // Add unique FloorID if missing
+      FloorID: floor.FloorID ?? index, // Add unique FloorID if missing
     }));
 
     // Default to the first floor if available
