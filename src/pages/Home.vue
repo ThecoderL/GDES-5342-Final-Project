@@ -82,10 +82,10 @@
 
 
 <script setup lang="ts">
-import CardComponent from "../components/CardComponent.vue";
-import Building from "../components/Building.vue";
+// import CardComponent from "../components/CardComponent.vue";
+// import Building from "../components/Building.vue";
 import BuildingSearcher from "../components/BuildingSearcher.vue";
-import BathroomSearcher from "../components/BathroomSearcher.vue";
+// import BathroomSearcher from "../components/BathroomSearcher.vue";
 import Navigation from "../components/Navigation.vue";
 </script>
 
@@ -102,8 +102,7 @@ import Navigation from "../components/Navigation.vue";
       <div class="bathroom-cards">
         <BuildingSearcher />
 <!--        <CardComponent number="1"/>-->
-        <router-view :key="$route.params.buildingID"/>
-
+        <router-view :key="Array.isArray($route.params.buildingID) ? $route.params.buildingID.join(',') : $route.params.buildingID" />
       </div>
     </div>
   </div>

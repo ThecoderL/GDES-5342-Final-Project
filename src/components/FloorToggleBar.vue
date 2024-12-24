@@ -16,6 +16,8 @@ const props = defineProps<{
 // Emit event to notify parent of floor selection
 const emit = defineEmits(["update:selectedFloor"]);
 
+console.log(props.floors);
+
 // Handle floor selection
 const handleFloorClick = (floorNumber: number) => {
   emit("update:selectedFloor", floorNumber);

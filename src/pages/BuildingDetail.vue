@@ -11,6 +11,7 @@ interface Building {
 }
 
 interface Floor {
+  FloorID?: number;
   FloorNumber: number;
   [key: string]: any;
 }
@@ -46,7 +47,10 @@ const fetchBuildingDetail = async () => {
 
     // Fetch floors for the building
     const floorResponse = await axios.get(`http://localhost:3300/api/buildings/${buildingId}/floors`);
-    floors.value = floorResponse.data;
+    floors.value = floorResponse.data.map((floor: any, index: number) => ({
+      ...floor,
+      FloorID: index, // Add unique FloorID if missing
+    }));
 
     // Default to the first floor if available
     if (floors.value.length > 0) {
@@ -122,7 +126,7 @@ onMounted(fetchBuildingDetail);
       <h3>Bathrooms on Floor {{ selectedFloor }}:</h3>
       <ul>
         <li v-for="bathroom in bathrooms" :key="bathroom.BathroomID">
-          {{ bathroom.BathroomID }}
+          Bathroom {{ bathroom.BathroomID }}
         </li>
       </ul>
     </div>
