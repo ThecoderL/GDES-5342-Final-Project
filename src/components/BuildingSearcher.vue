@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from 'vue-router';
-import Gopherbathrooms  from '../Gopherbathrooms.json';  // Adjust the path to your JSON file
+import Gopherbathrooms  from '../Gopherbathrooms.json';
 
 const router = useRouter();
 
